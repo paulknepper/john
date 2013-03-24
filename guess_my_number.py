@@ -4,18 +4,22 @@ Guess My Number rules:
     The computer will choose a number between 1 and 10.  Your goal is to guess what the
     number is.  The computer will give you hints on whether you are too high or too low
     with your guess.  Keep playing until you get it right!!
+
+    I've removed separate functions that picked  a number and get the guess from user in
+    order to shorten the lines of code used for competition.  I don't know if it matters
+    or if tradeoffs in readability for what amounts to 4 fewer lines of code is worth it.
 """
 from random import randint, choice
 
 def main():
     play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
-    number = pick_number() # Need to keep same number each time
+    number = randint(1,10)
     while not game_over(play):
-        guess = get_guess()
+        guess = eval(input("Pick a number between 1 and 10: "))
         if guess == number:
             print(choice(YOU_WIN))
             play = play_again(action='play')
-            number = pick_number()
+            number = randint(1,10) 
         elif guess > number:
             print(choice(TOO_HIGH))
             play = play_again()
@@ -29,16 +33,6 @@ def play_again(action='guess'):
                  "Don't be a quitter.  Guess again? (y/n) "]
     return input(questions[1] if action == 'guess' else questions[0])
                 
-def pick_number():
-    return randint(1,10)
-
-def get_guess():
-    return eval(input("Pick a number between 1 and 10: "))
-
-def ready_to_play():
-    p = input("Are you ready to play? (y/n): ")
-    return p
-
 def game_over(play):
     if play.lower()[0] == 'y':
         return False
