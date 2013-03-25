@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 # guess_my_number.py
 """
 Guess My Number rules:
@@ -8,6 +9,8 @@ Guess My Number rules:
     I've removed separate functions that picked  a number and get the guess from user in
     order to shorten the lines of code used for competition.  I don't know if it matters
     or if tradeoffs in readability for what amounts to 4 fewer lines of code is worth it.
+
+    Note that this is written in PYTHON 3.2.
 """
 from random import randint, choice
 
@@ -15,7 +18,7 @@ def main():
     play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
     number = randint(1,10)
     while not game_over(play):
-        guess = eval(input("Pick a number between 1 and 10: "))
+        guess = int(input("Pick a number between 1 and 10: "))
         if guess == number:
             print(choice(YOU_WIN))
             play = play_again(action='play')
