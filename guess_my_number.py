@@ -17,7 +17,7 @@ from random import randint, choice
 def main():
     play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
     number = randint(1,10)
-    while not game_over(play):
+    while not game_over(play): # Don't really need function here; 'while play == 'y':
         guess = int(input("Pick a number between 1 and 10: "))
         if guess == number:
             print(choice(YOU_WIN))
