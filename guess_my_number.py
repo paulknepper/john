@@ -18,17 +18,17 @@ def main():
     play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
     number = randint(1,10)
     while not game_over(play): # Don't really need function here; 'while play == 'y':
+        win = False
         guess = int(input("Pick a number between 1 and 10: "))
         if guess == number:
             print(choice(YOU_WIN))
-            play = play_again(action='play')
             number = randint(1,10) 
+            win = True  # Set to track which version of play_again should be used
         elif guess > number:
             print(choice(TOO_HIGH))
-            play = play_again()
         else:
             print(choice(TOO_LOW))
-            play = play_again()
+        play = play_again(action='play') if win else play_again()
     print(choice(GOODBYE))
 
 def play_again(action='guess'):
