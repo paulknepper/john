@@ -15,15 +15,15 @@ Guess My Number rules:
 from random import randint, choice
 
 def main():
-    play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
+    play = input("Hey!  Buddy!  Psst...over here: wanna play guess my number? (y/n): ") 
     number = randint(1,10)
-    while not game_over(play): # Don't really need function here; 'while play == 'y':
+    while play.lower()[0] != 'n': 
         win = False
         guess = int(input("Pick a number between 1 and 10: "))
         if guess == number:
             print(choice(YOU_WIN))
             number = randint(1,10) 
-            win = True  # Set to track which version of play_again should be used
+            win = True  # informs play_again version to use 
         elif guess > number:
             print(choice(TOO_HIGH))
         else:
@@ -36,11 +36,6 @@ def play_again(action='guess'):
                  "Don't be a quitter.  Guess again? (y/n) "]
     return input(questions[1] if action == 'guess' else questions[0])
                 
-def game_over(play):
-    if play.lower()[0] == 'y':
-        return False
-    return True
-
 TOO_HIGH = ["You're higher than Smoky on a Friday...",
             "How's the view from 30,000 feet?  You're kinda high...",
             "Bring it down a notch, Miss Cleo."]

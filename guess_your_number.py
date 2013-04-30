@@ -13,14 +13,15 @@ Guess Your Number rules:
 from random import randint, choice
 
 def main():
-    print("""Think of a number between 1 and some arbitrary upper bound and I will guess it. 
-    For example, if you are thinking of a number between 1 and 1000, 1000 is your upper bound.
+    print("""Think of a number between 1 and some arbitrary upper bound and I 
+    will guess it. For example, if you are thinking of a number between 1 and 
+    1000, 1000 is your upper bound.
+
     Don't let my artificial intelligence intimidate you.\n""")
-    input("Think of a number, then press <enter>.\n") 
     lBound = 1
     uBound = get_upper_bound() 
     play = input("Alright.  I'm ready.  Are you ready to play? (y/n): ")
-    while not game_over(play):
+    while play.lower()[0] != 'n':
         if lBound == uBound:
             print("Ah, this must be your number: {num}".format(num=uBound))
         guess = get_guess(lBound, uBound) 
@@ -44,15 +45,12 @@ def main():
     print(choice(ENDING_MESSAGE))
 
 def get_upper_bound():
-    return int(input("Got a number?  Ok--what is the upper bound of your range?: "))
+    return int(input("So tell me--you're thinking of a number between 1 and...what?: "))
 
 def play_again(action='guess'):
     questions = ["I'm feelin' good!  I think I've got your number.  Give it another shot? (y/n) ",
                  "Shall I guess again? (y/n) "] 
     return input(questions[0] if action == 'play' else questions[1])
-
-def game_over(play):
-    return False if play.lower()[0] == 'y' else True
 
 def get_guess(lower, upper):
     return (upper + lower) // 2
