@@ -3,6 +3,7 @@ import csv
 import sys
 from urllib.error import HTTPError
 from urllib.request import urlopen
+from datetime import date
 
 """
 Use python 3 for this script; this just pulls a stock based on a ticker
@@ -14,19 +15,21 @@ retrieval date of August 19, 2004 is arbitrary and can be changed as part
 of the URL.  Also, note that Yahoo's url schema numbers months from 0,
 thus January = 0, August = 7, December = 11, etc.
 """
+TODAY = date.today()
 
-def main():
+def stockcheck():
     print("""
 Enter a ticker symbol and retrieve stock data from as far back as August 
 19, 2004.  Then iterate line by line to view what the data looks like.
 """)
 
-    url = "http://ichart.finance.yahoo.com/table.csv?s=%s&d=1&e=12&f=2014&\
+    url = "http://ichart.finance.yahoo.com/table.csv?s=%s&d=%s&e=%s&f=%s&\
 g=d&a=7&b=19&c=2004&ignore=.csv"
 
     ticker = input("Enter a valid ticker symbol: ")
     try:
-        response = urlopen(url % ticker.upper())
+        response = urlopen(url % (ticker.upper(), TODAY.month-1, TODAY.day,
+            TODAY.year))
     except HTTPError:
         print("That isn't a real ticker. I can't let you do that, John.")
         sys.exit()
@@ -42,4 +45,4 @@ g=d&a=7&b=19&c=2004&ignore=.csv"
             break
     print("That's all there is...goodbye, John.")
 
-if __name__ == '__main__': main()
+if __name__ == '__main__': stockcheck() 
