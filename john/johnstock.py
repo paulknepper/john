@@ -28,7 +28,7 @@ g=d&a=7&b=19&c=2004&ignore=.csv"
     try:
         response = urlopen(url % ticker.upper())
     except HTTPError:
-        print("I can't let you do that, John. Enter a real ticker.")
+        print("That isn't a real ticker. I can't let you do that, John.")
         sys.exit()
     
     input("Press enter to parse data")
