@@ -1,13 +1,27 @@
+<<<<<<< HEAD
+=======
+#!/usr/local/bin/python3
+>>>>>>> 99e127b827708c343dd12fb260556b9155da2427
 # guess_my_number.py
 """
 Guess My Number rules:
     The computer will choose a number between 1 and 10.  Your goal is to guess what the
     number is.  The computer will give you hints on whether you are too high or too low
     with your guess.  Keep playing until you get it right!!
+<<<<<<< HEAD
+=======
+
+    I've removed separate functions that picked  a number and get the guess from user in
+    order to shorten the lines of code used for competition.  I don't know if it matters
+    or if tradeoffs in readability for what amounts to 4 fewer lines of code is worth it.
+
+    Note that this is written in PYTHON 3.2.
+>>>>>>> 99e127b827708c343dd12fb260556b9155da2427
 """
 from random import randint, choice
 
 def main():
+<<<<<<< HEAD
     play = input("Hey!  Buddy!  Psst...over here: wanna play a game? (y/n): ") 
     number = pick_number() # Need to keep same number each time
     while not game_over(play):
@@ -22,6 +36,22 @@ def main():
         else:
             print(choice(TOO_LOW))
             play = play_again()
+=======
+    play = input("Hey!  Buddy!  Psst...over here: wanna play guess my number? (y/n): ") 
+    number = randint(1,10)
+    while play.lower()[0] != 'n': 
+        win = False
+        guess = int(input("Pick a number between 1 and 10: "))
+        if guess == number:
+            print(choice(YOU_WIN))
+            number = randint(1,10) 
+            win = True  # informs play_again version to use 
+        elif guess > number:
+            print(choice(TOO_HIGH))
+        else:
+            print(choice(TOO_LOW))
+        play = play_again(action='play') if win else play_again()
+>>>>>>> 99e127b827708c343dd12fb260556b9155da2427
     print(choice(GOODBYE))
 
 def play_again(action='guess'):
@@ -29,6 +59,7 @@ def play_again(action='guess'):
                  "Don't be a quitter.  Guess again? (y/n) "]
     return input(questions[1] if action == 'guess' else questions[0])
                 
+<<<<<<< HEAD
 def pick_number():
     return randint(1,10)
 
@@ -44,6 +75,8 @@ def game_over(play):
         return False
     return True
 
+=======
+>>>>>>> 99e127b827708c343dd12fb260556b9155da2427
 TOO_HIGH = ["You're higher than Smoky on a Friday...",
             "How's the view from 30,000 feet?  You're kinda high...",
             "Bring it down a notch, Miss Cleo."]
