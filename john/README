@@ -1,1 +1,3 @@
 Script to share with John
+
+Push commits to 'john' remote (git push john master)
