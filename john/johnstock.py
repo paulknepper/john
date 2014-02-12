@@ -14,27 +14,30 @@ program to digest.  Just showing here how to get the raw data...the
 retrieval date of August 19, 2004 is arbitrary and can be changed as part 
 of the URL.  Also, note that Yahoo's url schema numbers months from 0,
 thus January = 0, August = 7, December = 11, etc.
+
+Updated to run with one command: python3 johnstock.py <ticker>
 """
 TODAY = date.today()
 
-def stockcheck():
-    print("""
-Enter a ticker symbol and retrieve stock data from as far back as August 
-19, 2004.  Then iterate line by line to view what the data looks like.
-""")
-
+def stockcheck(ticker=sys.argv[1] if len(sys.argv) > 1 else ''):
     url = "http://ichart.finance.yahoo.com/table.csv?s=%s&d=%s&e=%s&f=%s&\
 g=d&a=7&b=19&c=2004&ignore=.csv"
-
-    ticker = input("Enter a valid ticker symbol: ")
+    if not ticker:
+        # No ticker passed at command line, ask for one
+        print("""
+Enter a ticker symbol and retrieve stock data from as far back as August 
+19, 2004.  Then iterate line by line to view what the data looks like.
+        """)
+        ticker = input("Enter a valid ticker symbol: ")
     try:
         response = urlopen(url % (ticker.upper(), TODAY.month-1, TODAY.day,
             TODAY.year))
     except HTTPError:
-        print("That isn't a real ticker. I can't let you do that, John.")
+        print("%s isn't a real ticker. I can't let you do that, John."
+                % ticker.upper())
         sys.exit()
     
-    input("Press enter to parse data")
+    input("Ticker %s found. Press enter to parse data." % ticker.upper())
     # Note below probably very ugly way of doing this. Could have built
     # a couple generators to save memory and do same thing as reader.
     reader = csv.reader(response.read().decode().split('\n'))
