@@ -10,14 +10,15 @@ symbol and lets you go line by line to see how the data is formatted.
 
 Ordinarily you would parse this apart into something usable for your
 program to digest.  Just showing here how to get the raw data...the 
-retrieval date of July 19, 2004 is arbitrary and can be changed as part of
-the URL.
+retrieval date of August 19, 2004 is arbitrary and can be changed as part 
+of the URL.  Also, note that Yahoo's url schema numbers months from 0,
+thus January = 0, August = 7, December = 11, etc.
 """
 
 def main():
     print("""
-Enter a ticker symbol and retrieve stock data from as far back as July 19,
-2004.  Then iterate line by line to view what the data looks like.
+Enter a ticker symbol and retrieve stock data from as far back as August 
+19, 2004.  Then iterate line by line to view what the data looks like.
 """)
 
     url = "http://ichart.finance.yahoo.com/table.csv?s=%s&d=1&e=12&f=2014&\
