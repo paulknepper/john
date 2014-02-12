@@ -5,7 +5,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 """
-Use python 3 for this script; this just pulls a script based on a ticker
+Use python 3 for this script; this just pulls a stock based on a ticker
 symbol and lets you go line by line to see how the data is formatted.
 
 Ordinarily you would parse this apart into something usable for your
