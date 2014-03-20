@@ -37,8 +37,8 @@ def stockcheck(ticker='', dateflag=''):
     if not ticker:
         # No ticker passed at command line, ask for one
         print("""
-Enter a ticker symbol and retrieve stock data from as far back as August 
-19, 2004.  Then iterate line by line to view what the data looks like.
+Enter a ticker symbol and retrieve stock data from as far back as January
+1, 1940.  Then iterate line by line to view what the data looks like.
         """)
         ticker = input("Enter a valid ticker symbol: ")
     params['s'] = ticker
