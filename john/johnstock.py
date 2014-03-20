@@ -1,6 +1,5 @@
 # johnstock.py -- demo on pulling yahoo finance csv
-import csv
-import sys
+import csv, sys
 from urllib.error import HTTPError
 from urllib.request import urlopen
 from urllib.parse import urlencode
@@ -44,6 +43,8 @@ Enter a ticker symbol and retrieve stock data from as far back as August
         ticker = input("Enter a valid ticker symbol: ")
     params['s'] = ticker
     if dateflag == '-t':
+    # Note this will raise HTTPError if data does not exist yet, i.e. the
+    # market is not yet closed for the day
         params['a'] = TODAY.month-1
         params['b'] = TODAY.day
         params['c'] = TODAY.year
