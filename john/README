@@ -1,3 +1,21 @@
 Script to share with John
 
-Push commits to 'john' remote (git push john master)
+Push commits to john.git (origin): git push origin master
+
+Three ways to call johnstock at command line; python version assumed to be
+3.x:
+
+1. $ python johnstock.py
+
+This will interact with the user to ask for a valid ticker system, and will
+pull stock data from later of Jan 1, 1940 and stock IPO date.  Note the 
+use of 1/1/1940 is arbitrary.
+
+2. $ python johnstock.py <ticker>
+
+This will automatically retrive data for <ticker> as far back as the later
+of Jan 1, 1940 and the stock's IPO date.
+
+3. $ python johnstock.py -t <ticker>
+
+The -t flag tells the script to only pull stock data for today.
