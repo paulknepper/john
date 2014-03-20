@@ -18,4 +18,7 @@ of Jan 1, 1940 and the stock's IPO date.
 
 3. $ python johnstock.py -t <ticker>
 
-The -t flag tells the script to only pull stock data for today.
+The -t flag tells the script to only pull stock data for today. Note that
+if the day has not ended, this will raise HTTPError as the data does not
+exist.  To pull prior day, run option 2 above and pop off the first 
+result.
