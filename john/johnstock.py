@@ -10,18 +10,15 @@ from datetime import date
 Use python 3 for this script; this just pulls a stock based on a ticker
 symbol and lets you go line by line to see how the data is formatted.
 
-Ordinarily you would parse this apart into something usable for your
-program to digest.  Just showing here how to get the raw data...the 
-retrieval date of January 1, 1940 is arbitrary and can be changed as part 
-of the URL.  Also, note that Yahoo's url schema numbers months from 0,
-thus January = 0, August = 7, December = 11, etc.
+Note that Yahoo's url schema numbers months from 0, thus January = 0, 
+August = 7, December = 11, etc.
 
-Updated to run with one command: python3 johnstock.py <ticker>
-
-Updated to pull just data from today (or yesterday if market still open
-today).  To pull just today, at the command line use the -t flag:
-
+Run using one of following commands:
+$ python3 johnstock.py
+$ python3 johnstock.py <ticker>
 $ python3 johnstock.py -t <ticker>
+
+See README for details.
 """
 TODAY = date.today()
 
