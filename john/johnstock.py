@@ -29,9 +29,9 @@ def stockcheck(ticker='', dateflag=''):
     base_url = "http://ichart.finance.yahoo.com/table.csv?"
     params = {
             's':'', # stock ticker
-            'd':'', # month as int (Jan == 0)
-            'e':'', # day as int
-            'f':'', # year as int
+            'd':'', # end month as int (Jan == 0)
+            'e':'', # end day as int
+            'f':'', # end year as int
             'g':'d', # ???
             'a':1, # start month (Jan == 0)
             'b':1, # start day
